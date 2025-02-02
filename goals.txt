@@ -1,0 +1,8 @@
+Short-term goals:
+    1: Learn efficient tactics and techniques for developing software in the workplace.
+    2: Learn more about what modern software development entails.
+    3: Learn more about software development in a team environment.
+Long-term goals:
+    1: Gain important skills for a career in computer science.
+    2: Gain a deeper understanding of the inner workings of software and computers.
+    3: Gain valuable experience for developing software in the workplace.
