@@ -24,8 +24,8 @@ erDiagram
         int defense
     }
     ADMIN ||--|{ USER : manages
-    ADMIN ||--|{ CARD : approves
-    USER ||--|{ DECK : owns
+    ADMIN ||--o{ CARD : approves
+    USER ||--o{ DECK : owns
     DECK ||--|{ CARD : contains
 ```
 
@@ -136,3 +136,40 @@ requirementDiagram
     update_deck - satisfies -> owner_req
     delete_deck - satisfies -> owner_req
 ```
+
+## Database Schema
+
+```mermaid
+erDiagram
+    USER {
+        uuid id
+        varchar name
+        datetime2 join_date
+        bit is_admin
+        varchar email
+        varchar password_hash
+    }
+    DECK {
+        uuid id
+        uuid userId
+        varchar name
+    }
+    DECKCARD {
+        uuid deckId
+        uuid cardId
+    }
+    CARD {
+        uuid id
+        varchar name
+        varchar type
+        int rarity
+        bit is_approved
+        int attack
+        int defense
+    }
+
+    USER ||--o{ DECK : has
+    DECK ||--|{ DECKCARD : has
+    CARD ||--o{ DECKCARD : has
+```
+    
