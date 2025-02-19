@@ -32,7 +32,7 @@ def tic_tac_toe():
                     break
                 else:
                     print("Nope. Again.")
-            except:
+            except IndexError:
                 print("Wrong. 0-2 pls.")
         print_board(board)
         if is_winner(board, player):
