@@ -21,8 +21,8 @@ def tic_tac_toe():
     board, players = init_game()
     print("Tic-Tac-Toe Game")
     print_board(board)
-    for t in range(9):
-        player = players[t % 2]
+    for turn in range(9):
+        player = players[turn % 2]
         play_turn(board, player)
         print_board(board)
         if is_winner(board, player):
