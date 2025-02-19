@@ -49,6 +49,8 @@ def play_turn(board, player):
                 break
             else:
                 print("Nope. Again.")
+        except ValueError:
+            print("2 numbers pls.")
         except IndexError:
             print("Wrong. 0-2 pls.")
 
