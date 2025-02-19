@@ -2,19 +2,15 @@
 
 ## Entity Relationship Diagram
 
-'''
+```mermaid
 erDiagram
-    ADMIN ||--o(USER : manages
-    ADMIN ||--o(CARD : approves
     ADMIN {
-        name
+        string name
     }
-    USER ||--o(DECK : owns
     USER {
         string name
         int userID
     }
-    DECK ||--|(CARD : contains
     DECK {
         int cardCount
         int deckID
@@ -27,60 +23,60 @@ erDiagram
         int attack
         int defense
     }
-'''
+    ADMIN ||--|{ USER : manages
+    ADMIN ||--o{ CARD : approves
+    USER ||--o{ DECK : owns
+    DECK ||--|{ CARD : contains
+```
 
 ## User Flow Diagram
 
-'''
-title: View Cards
-'''
+View Cards
+```mermaid
 flowchart LR
-    Login
-    Deck viewer
 
-'''
-title: Add Card
-'''
-flowchart LR
-    Login
-    Add card dialog
-    Card information entry
-    Submit for approval
+    id1[Login] --> id2[Deck viewer]
+```
 
-'''
-title: Create Deck
-'''
+Add Card
+```mermaid
 flowchart LR
-    Login
-    Deck builder
-    Card selection
-    Name deck
 
-'''
-title: Approve Card
-'''
+    id1[Login] --> id2[Add card dialog] --> id3[Card information entry] --> id4[Submit for approval]
+```
+
+Create Deck
+```mermaid
 flowchart LR
-    Admin login
-    Card approval queue
-    Card review
+
+    id1[Login] --> id2[Deck builder] --> id3[Card selection] --> id4[Name deck]
+```
+
+Approve Card
+```mermaid
+flowchart LR
+
+    id1[Admin login] --> id2[Card approval queue] --> id3[Card review]
+```
 
 ## Architecture Diagram
 
-'''
+```mermaid
 architecture-beta
-    group api(cloud)API
+
+    group api(cloud)[API]
 
     service frontend(internet)[Frontend] in api
     service server(server)[Server] in api
     service db(database)[Database] in api
 
-    frontend:b -- t:server
-    server:l -- r:db
-'''
+    frontend:T --> B:server
+    server:R --> L:db
+```
 
 ## API Endpoints Diagram
 
-'''
+```mermaid
 requirementDiagram
 
     requirement auth_req {
@@ -139,4 +135,41 @@ requirementDiagram
     delete_card - satisfies -> admin_req
     update_deck - satisfies -> owner_req
     delete_deck - satisfies -> owner_req
-'''
+```
+
+## Database Schema
+
+```mermaid
+erDiagram
+    USER {
+        uuid id
+        varchar name
+        datetime2 join_date
+        bit is_admin
+        varchar email
+        varchar password_hash
+    }
+    DECK {
+        uuid id
+        uuid userId
+        varchar name
+    }
+    DECKCARD {
+        uuid deckId
+        uuid cardId
+    }
+    CARD {
+        uuid id
+        varchar name
+        varchar type
+        int rarity
+        bit is_approved
+        int attack
+        int defense
+    }
+
+    USER ||--o{ DECK : has
+    DECK ||--|{ DECKCARD : has
+    CARD ||--o{ DECKCARD : has
+```
+    
