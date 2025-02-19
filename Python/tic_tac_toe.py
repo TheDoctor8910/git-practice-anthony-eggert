@@ -1,10 +1,20 @@
 def print_board(board):
+    """
+    Prints the board in a Tic-Tac-Toe grid.
+    :param board: The game board
+    """
     for row in board:
         print(" | ".join(row))
         print("-" * 5)
 
 
 def is_winner(board, player):
+    """
+    Checks if the current player has 3 spaces in a line on the board.
+    :param board: The game board
+    :param player: The current player
+    :return: True if the player has three spaces in a line, False otherwise
+    """
     for i in range(3):
         if all(board[i][j] == player for j in range(3)) or all(board[j][i] == player for j in range(3)):
             return True
@@ -14,10 +24,18 @@ def is_winner(board, player):
 
 
 def has_full_board(board):
+    """
+    Checks if all spaces on the board are full.
+    :param board: The game board
+    :return: True if there are no available spaces left, False otherwise
+    """
     return all(col != " " for row in board for col in row)
 
 
 def tic_tac_toe():
+    """
+    Plays a full game of Tic-Tac-Toe.
+    """
     board, players = init_game()
     print("Tic-Tac-Toe Game")
     print_board(board)
@@ -35,12 +53,21 @@ def tic_tac_toe():
 
 
 def init_game():
+    """
+    Generates the initial board and player array
+    :return: A 3x3 array representing each space on the board and an array containing the player symbols
+    """
     board = [[" " for _ in range(3)] for _ in range(3)]
     players = ["X", "O"]
     return board, players
 
 
 def play_turn(board, player):
+    """
+    Handles user input for a single turn.
+    :param board: The game board for recording player action
+    :param player: The current player
+    """
     while 1:
         try:
             row, col = map(int, input(f"P {player}, row col (0-2): ").split())
