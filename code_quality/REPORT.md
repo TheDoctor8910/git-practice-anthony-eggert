@@ -28,3 +28,9 @@ Bottleneck found in:
 - Replaced loop with arithmetic function - Significant speedup
 - Also tested with lru_cache - slight further speedup
 
+## Code Coverage
+
+- Coverage before: 85%
+- Coverage after: 100%
+- 'unused_function' was not covered, removed
+
