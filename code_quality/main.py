@@ -1,7 +1,4 @@
-import math
-import random
 from functools import lru_cache
-
 from line_profiler import profile
 
 @lru_cache(maxsize=None)
@@ -19,7 +16,7 @@ def slow_func(lst):
 @profile
 def main():
     numbers = list(range(1000))
-    output = slow_func(numbers)
+    slow_func(numbers)
     print("Done")
 
 

@@ -34,3 +34,8 @@ Bottleneck found in:
 - Coverage after: 100%
 - 'unused_function' was not covered, removed
 
+## Fix Summary
+- Replaced expensive loop in expensive_op with arithmetic function and added lru caching
+- Removed unused_function
+- Removed unused variable receiving slow_func output
+- Removed unused imports
