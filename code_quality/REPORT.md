@@ -1,6 +1,6 @@
 # Static and Dynamic Code Analysis Report
 
-## Static analysis
+## Static Analysis
 
 
 **flake8**:
@@ -17,3 +17,10 @@
 - line 28: unused variable 'output'
 - line 1: unused import math
 - line 2: unused import random
+
+## Line Profiler
+
+Bottleneck found in:
+
+- 'expensive_op': took ~1.12 seconds for 1000 calls
+
