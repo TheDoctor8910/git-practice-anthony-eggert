@@ -24,3 +24,7 @@ Bottleneck found in:
 
 - 'expensive_op': took ~1.12 seconds for 1000 calls
 
+### Fix:
+- Replaced loop with arithmetic function - Significant speedup
+- Also tested with lru_cache - slight further speedup
+

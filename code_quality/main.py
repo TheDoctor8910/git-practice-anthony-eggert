@@ -1,13 +1,13 @@
 import math
 import random
+from functools import lru_cache
+
 from line_profiler import profile
 
+@lru_cache(maxsize=None)
 @profile
 def expensive_op(n):
-    total = 0
-    for i in range(1000):
-        total += i * n
-    return total
+    return n * (999 * 1000) // 2
 
 @profile
 def slow_func(lst):
